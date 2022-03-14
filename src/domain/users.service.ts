@@ -4,8 +4,8 @@ import { User } from '../core/user.entity';
 export class UsersService {
   private userRepo: IUserRepository;
 
-  constructor(userRpository: IUserRepository) {
-    this.userRepo = userRpository;
+  constructor(userRepository: IUserRepository) {
+    this.userRepo = userRepository;
   }
 
   create(username: string, email: string, password: string): Promise<User> {

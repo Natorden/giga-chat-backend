@@ -7,6 +7,7 @@ export class LogInController {
   constructor(
     @Inject('UserService') private readonly usersService: UsersService,
   ) {}
+
   @Post()
   login(@Body() createLogInDto: CreateLogInDto) {
     return this.usersService.login(
