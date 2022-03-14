@@ -10,7 +10,7 @@ export const UserSchema = new EntitySchema<User>({
       generated: 'uuid',
       primary: true,
     },
-    name: {
+    username: {
       type: 'varchar',
     },
     email: {
