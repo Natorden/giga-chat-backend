@@ -15,4 +15,8 @@ export class UsersService {
   login(username: string, password: string): Promise<User> {
     return this.userRepo.getUser(username, password);
   }
+
+  findAll(): Promise<User[]> {
+    return this.userRepo.getAllUsers();
+  }
 }
