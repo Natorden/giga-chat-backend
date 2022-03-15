@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserSchema } from '../infrastructure/typeORM/user.schema';
-import { UserRepositoryAdapter } from '../infrastructure/typeORM/userRepository.adapter';
+import { UserSchema } from '../infrastructure/typeORM/schemas/user.schema';
+import { UserRepositoryAdapter } from '../infrastructure/typeORM/adapters/userRepository.adapter';
 import { IUserRepository } from '../domain/borders/userRepository.interface';
 import { UsersService } from '../domain/users.service';
 import { LogInController } from './log-in.controller';
