@@ -20,8 +20,8 @@ export class RoomsService {
     return this.roomRepo.getAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} room`;
+  findOne(uuid: string) {
+    return this.roomRepo.getWithUUID(uuid);
   }
 
   update(id: number, updateRoomDto: UpdateRoomDto) {

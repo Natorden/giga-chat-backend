@@ -19,6 +19,7 @@ export const RoomSchema = new EntitySchema<Room>({
     chats: {
       type: 'one-to-many',
       target: 'Chat',
+      inverseSide: 'room',
     },
   },
 });
