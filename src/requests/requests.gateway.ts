@@ -33,7 +33,6 @@ export class RequestsGateway {
      * creates request in the database ->
      * sends the request to the receiver uuid
      */
-
     const newRequest: CreateRequestDto = {
       senderUserId: createRequestDto.senderUserId,
       receiverUserId: createRequestDto.receiverUserId,
@@ -46,6 +45,6 @@ export class RequestsGateway {
 
   @SubscribeMessage('removeRequest')
   remove(@MessageBody() id: string) {
-    return this.requestService.declineRequest(id);
+    return;
   }
 }
