@@ -20,5 +20,10 @@ export const ChatSchema = new EntitySchema<Chat>({
       target: 'Room',
       joinColumn: true,
     },
+    user: {
+      type: 'many-to-one',
+      target: 'User',
+      joinColumn: true,
+    },
   },
 });

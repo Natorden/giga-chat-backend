@@ -19,7 +19,7 @@ export class RoomRepositoryAdapter implements IRoomRepository {
 
   getWithUUID(uuid: string): Promise<Room> {
     return this.roomRepo.findOne(uuid, {
-      relations: ['chats'],
+      relations: ['chats', 'chats.user'],
     });
   }
 }

@@ -23,7 +23,8 @@ export class ChatsGateway {
   @SubscribeMessage('createChat')
   create(@MessageBody() createChatDto: CreateChatDto) {
     //todo store incoming messages using services
-    this.server.emit(createChatDto.room, createChatDto);
-    this.chatsService.create(createChatDto);
+    this.chatsService
+      .create(createChatDto)
+      .then((newChat) => this.server.emit(createChatDto.room, newChat));
   }
 }
