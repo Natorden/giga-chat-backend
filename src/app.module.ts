@@ -5,6 +5,8 @@ import { ChatsModule } from './chats/chats.module';
 import { LogInModule } from './log-in/log-in.module';
 import { RequestsModule } from './requests/requests.module';
 import { FriendsModule } from './friends/friends.module';
+import { RoomsModule } from './rooms/rooms.module';
+import { ChatSchema } from './infrastructure/typeORM/schemas/chat.schema';
 
 @Module({
   imports: [
@@ -19,6 +21,7 @@ import { FriendsModule } from './friends/friends.module';
     LogInModule,
     RequestsModule,
     FriendsModule,
+    RoomsModule,
   ],
   controllers: [],
   providers: [],

@@ -1,4 +1,9 @@
-export class ChatEntity {
+import { Room } from './room.entity';
+import { User } from './user';
+
+export class Chat {
+  uuid: string;
   text: string;
-  room: string;
+  room: Room;
+  user: User;
 }

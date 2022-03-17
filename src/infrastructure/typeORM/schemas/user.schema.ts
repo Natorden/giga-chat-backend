@@ -20,5 +20,11 @@ export const UserSchema = new EntitySchema<User>({
       type: 'varchar',
     },
   },
-  relations: {},
+  relations: {
+    chats: {
+      type: 'one-to-many',
+      target: 'Chat',
+      inverseSide: 'user',
+    },
+  },
 });

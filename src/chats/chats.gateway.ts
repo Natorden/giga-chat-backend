@@ -4,7 +4,7 @@ import {
   MessageBody,
   WebSocketServer,
 } from '@nestjs/websockets';
-import { ChatsService } from './chats.service';
+import { ChatsService } from '../domain/chats.service';
 import { CreateChatDto } from './dto/create-chat.dto';
 import { UpdateChatDto } from './dto/update-chat.dto';
 import { Server } from 'socket.io';
@@ -23,26 +23,8 @@ export class ChatsGateway {
   @SubscribeMessage('createChat')
   create(@MessageBody() createChatDto: CreateChatDto) {
     //todo store incoming messages using services
-    this.server.emit(createChatDto.room, createChatDto);
-  }
-
-  @SubscribeMessage('findAllChats')
-  findAll() {
-    return this.chatsService.findAll();
-  }
-
-  @SubscribeMessage('findOneChat')
-  findOne(@MessageBody() id: number) {
-    return this.chatsService.findOne(id);
-  }
-
-  @SubscribeMessage('updateChat')
-  update(@MessageBody() updateChatDto: UpdateChatDto) {
-    return this.chatsService.update(updateChatDto.id, updateChatDto);
-  }
-
-  @SubscribeMessage('removeChat')
-  remove(@MessageBody() id: number) {
-    return this.chatsService.remove(id);
+    this.chatsService
+      .create(createChatDto)
+      .then((newChat) => this.server.emit(createChatDto.room, newChat));
   }
 }
