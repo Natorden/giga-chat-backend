@@ -13,8 +13,8 @@ export class RequestsController {
   create(@Body() createRequestDto: CreateRequestDto) {
     // Used for testing purposes
     return this.requestService.create(
-      createRequestDto.senderId,
-      createRequestDto.receiverId,
+      createRequestDto.senderUserId,
+      createRequestDto.receiverUserId,
     );
   }
 

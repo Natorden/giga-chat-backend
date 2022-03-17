@@ -35,13 +35,13 @@ export class RequestsGateway {
      */
 
     const newRequest: CreateRequestDto = {
-      senderId: createRequestDto.senderId,
-      receiverId: createRequestDto.receiverId,
+      senderUserId: createRequestDto.senderUserId,
+      receiverUserId: createRequestDto.receiverUserId,
     };
 
     this.requestService
-      .create(newRequest.senderId, newRequest.receiverId)
-      .then((r) => this.server.emit(newRequest.receiverId, r.senderUserId));
+      .create(newRequest.senderUserId, newRequest.receiverUserId)
+      .then((r) => this.server.emit(newRequest.receiverUserId, r.senderUserId));
   }
 
   @SubscribeMessage('removeRequest')

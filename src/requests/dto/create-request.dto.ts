@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateRequestDto {
   @ApiProperty()
-  senderId: string;
+  senderUserId: string;
   @ApiProperty()
-  receiverId: string;
+  receiverUserId: string;
 }
