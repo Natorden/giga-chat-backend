@@ -1,6 +1,13 @@
-import { Controller, Post, Body, Inject } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Inject,
+  BadRequestException,
+} from '@nestjs/common';
 import { CreateLogInDto } from './dto/create-log-in.dto';
 import { UsersService } from '../domain/users.service';
+import { User } from '../core/user';
 
 @Controller('log-in')
 export class LogInController {
@@ -9,7 +16,7 @@ export class LogInController {
   ) {}
 
   @Post()
-  login(@Body() createLogInDto: CreateLogInDto) {
+  login(@Body() createLogInDto: CreateLogInDto): Promise<User> {
     return this.usersService.login(
       createLogInDto.username,
       createLogInDto.password,
