@@ -1,24 +1,23 @@
 import { EntitySchema } from 'typeorm';
-import { Room } from '../../../core/room.entity';
 import { Chat } from '../../../core/chat.entity';
 
-export const RoomSchema = new EntitySchema<Room>({
-  name: 'Room',
-  target: Room,
+export const ChatSchema = new EntitySchema<Chat>({
+  name: 'Chat',
+  target: Chat,
   columns: {
     uuid: {
       type: 'uuid',
       primary: true,
       generated: 'uuid',
     },
-    name: {
+    text: {
       type: 'varchar',
     },
   },
   relations: {
-    chats: {
-      type: 'one-to-many',
-      target: 'Chat',
+    room: {
+      type: 'many-to-one',
+      target: 'Room',
     },
   },
 });

@@ -4,7 +4,7 @@ import {
   MessageBody,
   WebSocketServer,
 } from '@nestjs/websockets';
-import { ChatsService } from './chats.service';
+import { ChatsService } from '../domain/chats.service';
 import { CreateChatDto } from './dto/create-chat.dto';
 import { UpdateChatDto } from './dto/update-chat.dto';
 import { Server } from 'socket.io';
@@ -15,7 +15,7 @@ import { Server } from 'socket.io';
   },
 })
 export class ChatsGateway {
-  @WebSocketServer()
+  /*@WebSocketServer()
   server: Server;
 
   constructor(private readonly chatsService: ChatsService) {}
@@ -44,5 +44,5 @@ export class ChatsGateway {
   @SubscribeMessage('removeChat')
   remove(@MessageBody() id: number) {
     return this.chatsService.remove(id);
-  }
+  }*/
 }
