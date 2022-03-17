@@ -19,4 +19,8 @@ export class UsersService {
   findAll(): Promise<User[]> {
     return this.userRepo.getAllUsers();
   }
+
+  findById(id: string): Promise<User> {
+    return this.userRepo.getUserById(id);
+  }
 }

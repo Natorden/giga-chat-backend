@@ -6,9 +6,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { RequestSchema } from '../infrastructure/typeORM/schemas/request.schema';
 import { RequestRepositoryAdapter } from '../infrastructure/typeORM/adapters/requestRepository.adapter';
 import { IRequestRepository } from '../domain/borders/requestRepository.interface';
+import { UsersModule } from '../users/users.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([RequestSchema])],
+  imports: [TypeOrmModule.forFeature([RequestSchema]), UsersModule],
   providers: [
     {
       provide: 'RequestRepository',

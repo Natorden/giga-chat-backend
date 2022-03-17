@@ -1,6 +1,7 @@
-import { Body, Controller, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
 import { RequestsService } from '../domain/requests.service';
 import { CreateRequestDto } from './dto/create-request.dto';
+import { RequestEntity } from '../core/request.entity';
 
 @Controller('requests')
 export class RequestsController {
@@ -10,9 +11,15 @@ export class RequestsController {
 
   @Post()
   create(@Body() createRequestDto: CreateRequestDto) {
+    // Used for testing purposes
     return this.requestService.create(
-      createRequestDto.senderUserId,
-      createRequestDto.receiverUserId,
+      createRequestDto.senderId,
+      createRequestDto.receiverId,
     );
+  }
+
+  @Get(':id')
+  findById(@Param('id') userId: string): Promise<RequestEntity[]> {
+    return this.requestService.findByReceiverId(userId);
   }
 }

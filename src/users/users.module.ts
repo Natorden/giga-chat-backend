@@ -21,5 +21,6 @@ import { UserSchema } from '../infrastructure/typeORM/schemas/user.schema';
         new UsersService(userRepository),
     },
   ],
+  exports: ['UserService'],
 })
 export class UsersModule {}

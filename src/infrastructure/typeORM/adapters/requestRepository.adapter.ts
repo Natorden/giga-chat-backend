@@ -12,7 +12,7 @@ export class RequestRepositoryAdapter implements IRequestRepository {
     this.requestRepo = em.getRepository(RequestSchema);
   }
 
-  create(senderId: number, receiverId: number): Promise<RequestEntity> {
+  create(senderId: string, receiverId: string): Promise<RequestEntity> {
     return this.requestRepo.save({
       receiverUserId: receiverId,
       senderUserId: senderId,
@@ -24,10 +24,14 @@ export class RequestRepositoryAdapter implements IRequestRepository {
   }
 
   getById(id: string): Promise<RequestEntity> {
-    return this.requestRepo.findOne({ uuid: id });
+    return this.requestRepo.findOne({ where: { uuid: id } });
   }
 
-  getBySenderId(senderId: number): Promise<RequestEntity[]> {
-    return this.requestRepo.find({ senderUserId: senderId });
+  getBySenderId(senderId: string): Promise<RequestEntity[]> {
+    return this.requestRepo.find({ where: { senderUserId: senderId } });
+  }
+
+  getByReceiverId(receiverId: string): Promise<RequestEntity[]> {
+    return this.requestRepo.find({ where: { receiverUserId: receiverId } });
   }
 }

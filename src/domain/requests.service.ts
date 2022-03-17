@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { CreateRequestDto } from '../requests/dto/create-request.dto';
 import { UpdateRequestDto } from '../requests/dto/update-request.dto';
 import { IRequestRepository } from './borders/requestRepository.interface';
+import { User } from '../core/user';
+import { RequestEntity } from '../core/request.entity';
 
 @Injectable()
 export class RequestsService {
@@ -11,12 +13,16 @@ export class RequestsService {
     this.requestRepo = requestRepository;
   }
 
-  create(senderId: number, receiverId: number) {
+  create(senderId: string, receiverId: string): Promise<RequestEntity> {
     return this.requestRepo.create(senderId, receiverId);
   }
 
-  find(userId: number) {
+  findBySenderId(userId: string): Promise<RequestEntity[]> {
     return this.requestRepo.getBySenderId(userId);
+  }
+
+  findByReceiverId(userId: string): Promise<RequestEntity[]> {
+    return this.requestRepo.getByReceiverId(userId);
   }
 
   acceptRequest(id: string) {
