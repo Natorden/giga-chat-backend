@@ -26,7 +26,7 @@ export class RoomsController {
     return this.roomsService.findAll();
   }
 
-  @Get(':id')
+  @Get(':uuid')
   findOne(@Param('uuid') uuid: string) {
     return this.roomsService.findOne(uuid);
   }
