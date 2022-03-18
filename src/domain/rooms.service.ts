@@ -16,8 +16,8 @@ export class RoomsService {
     return 'This action adds a new room';
   }
 
-  findAll() {
-    return this.roomRepo.getAll();
+  findAll(userUUID: string) {
+    return this.roomRepo.getAll(userUUID);
   }
 
   findOne(uuid: string) {
