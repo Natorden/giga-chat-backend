@@ -21,9 +21,9 @@ export class RoomsController {
     return this.roomsService.create(createRoomDto);
   }
 
-  @Get()
-  findAll() {
-    return this.roomsService.findAll();
+  @Get('user/:uuid')
+  findAll(@Param('uuid') uuid: string) {
+    return this.roomsService.findAll(uuid);
   }
 
   @Get(':uuid')
