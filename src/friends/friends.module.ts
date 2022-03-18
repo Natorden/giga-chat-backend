@@ -5,9 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { FriendSchema } from '../infrastructure/typeORM/schemas/friend.schema';
 import { FriendRepositoryAdapter } from '../infrastructure/typeORM/adapters/friendRepository.adapter';
 import { IFriendRepository } from '../domain/borders/friendRepository.interface';
+import { UsersModule } from '../users/users.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([FriendSchema])],
+  imports: [TypeOrmModule.forFeature([FriendSchema]), UsersModule],
   providers: [
     {
       provide: 'FriendRepository',

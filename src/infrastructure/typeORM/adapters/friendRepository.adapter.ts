@@ -25,12 +25,9 @@ export class FriendRepositoryAdapter implements IFriendRepository {
 
   getFriendsByUserId(userId: string): Promise<Friend[]> {
     // Select friend where the first or second user id is equal to userId
-    return this.friendRepo
-      .createQueryBuilder('friend')
-      .select('friend')
-      .where('friend.userOneId = :oneId', { userId })
-      .orWhere('friend.userTwoId = :twoId', { userId })
-      .getMany();
+    return this.friendRepo.find({
+      where: [{ userOneId: userId }, { userTwoId: userId }],
+    });
   }
 
   getAll(): Promise<Friend[]> {
