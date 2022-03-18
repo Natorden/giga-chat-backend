@@ -1,8 +1,6 @@
-import { Injectable } from '@nestjs/common';
 import { CreateFriendDto } from '../friends/dto/create-friend.dto';
-import { UpdateFriendDto } from '../friends/dto/update-friend.dto';
-import { IUserRepository } from './borders/userRepository.interface';
 import { IFriendRepository } from './borders/friendRepository.interface';
+import { Friend } from '../core/friend';
 
 export class FriendsService {
   private friendRepo: IFriendRepository;
@@ -22,7 +20,7 @@ export class FriendsService {
     return this.friendRepo.getAll();
   }
 
-  findByUserId(id: string) {
+  findByUserId(id: string): Promise<Friend[]> {
     return this.friendRepo.getFriendsByUserId(id);
   }
 
