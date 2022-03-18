@@ -44,4 +44,11 @@ export class RoomRepositoryAdapter implements IRoomRepository {
       relations: ['chats', 'chats.user'],
     });
   }
+
+  create(name: string, userUUID: string): Promise<Room> {
+    return this.roomRepo.save({
+      name: name,
+      user: { uuid: userUUID },
+    });
+  }
 }

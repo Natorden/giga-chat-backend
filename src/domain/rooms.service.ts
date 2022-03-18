@@ -13,7 +13,7 @@ export class RoomsService {
   }
 
   create(createRoomDto: CreateRoomDto) {
-    return 'This action adds a new room';
+    return this.roomRepo.create(createRoomDto.name, createRoomDto.userUUID);
   }
 
   findAll(userUUID: string) {
