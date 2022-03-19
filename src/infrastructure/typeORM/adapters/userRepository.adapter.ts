@@ -33,4 +33,8 @@ export class UserRepositoryAdapter implements IUserRepository {
   getUserById(id: string): Promise<User> {
     return this.userRepo.findOne({ where: { uuid: id } });
   }
+
+  getUsersByIds(ids: string[]): Promise<User[]> {
+    return this.userRepo.findByIds(ids);
+  }
 }
