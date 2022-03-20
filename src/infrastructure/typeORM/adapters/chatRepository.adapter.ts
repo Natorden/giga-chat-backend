@@ -1,8 +1,5 @@
-import { IRoomRepository } from '../../../domain/borders/roomRepository.interface';
 import { Injectable } from '@nestjs/common';
-import { Room } from '../../../core/room.entity';
 import { EntityManager, Repository } from 'typeorm';
-import { RoomSchema } from '../schemas/room.schema';
 import { Chat } from '../../../core/chat.entity';
 import { ChatSchema } from '../schemas/chat.schema';
 import { IChatRepository } from '../../../domain/borders/chatRepository.interface';

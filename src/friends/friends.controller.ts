@@ -1,10 +1,6 @@
-import { Controller, Get, Post, Body, Param, Inject } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
 import { FriendsService } from '../domain/friends.service';
 import { CreateFriendDto } from './dto/create-friend.dto';
-import { UpdateFriendDto } from './dto/update-friend.dto';
-import { RequestsService } from '../domain/requests.service';
-import { CreateRequestDto } from '../requests/dto/create-request.dto';
-import { Friend } from '../core/friend';
 
 import { User } from '../core/user';
 import { UsersService } from '../domain/users.service';

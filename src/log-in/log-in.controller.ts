@@ -1,10 +1,4 @@
-import {
-  Controller,
-  Post,
-  Body,
-  Inject,
-  BadRequestException,
-} from '@nestjs/common';
+import { Body, Controller, Inject, Post } from '@nestjs/common';
 import { CreateLogInDto } from './dto/create-log-in.dto';
 import { UsersService } from '../domain/users.service';
 import { User } from '../core/user';

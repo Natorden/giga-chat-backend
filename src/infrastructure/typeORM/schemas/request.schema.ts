@@ -1,5 +1,4 @@
 import { EntitySchema } from 'typeorm';
-import { User } from '../../../core/user';
 import { RequestEntity } from '../../../core/request.entity';
 
 export const RequestSchema = new EntitySchema<RequestEntity>({

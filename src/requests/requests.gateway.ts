@@ -1,16 +1,13 @@
 import {
-  WebSocketGateway,
-  SubscribeMessage,
   MessageBody,
+  SubscribeMessage,
+  WebSocketGateway,
   WebSocketServer,
 } from '@nestjs/websockets';
 import { RequestsService } from '../domain/requests.service';
 import { CreateRequestDto } from './dto/create-request.dto';
-import { UpdateRequestDto } from './dto/update-request.dto';
 import { Inject } from '@nestjs/common';
 import { Server } from 'socket.io';
-import { UsersService } from '../domain/users.service';
-import { User } from '../core/user';
 
 @WebSocketGateway({
   cors: {

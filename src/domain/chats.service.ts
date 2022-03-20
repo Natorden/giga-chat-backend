@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateChatDto } from '../chats/dto/create-chat.dto';
 import { UpdateChatDto } from '../chats/dto/update-chat.dto';
-import { IRoomRepository } from './borders/roomRepository.interface';
 import { IChatRepository } from './borders/chatRepository.interface';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 

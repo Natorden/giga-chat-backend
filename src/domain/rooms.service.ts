@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { CreateRoomDto } from '../rooms/dto/create-room.dto';
 import { UpdateRoomDto } from '../rooms/dto/update-room.dto';
-import { IFriendRepository } from './borders/friendRepository.interface';
 import { IRoomRepository } from './borders/roomRepository.interface';
 
 @Injectable()

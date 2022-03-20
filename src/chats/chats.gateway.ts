@@ -1,13 +1,12 @@
 import {
-  WebSocketGateway,
-  SubscribeMessage,
-  MessageBody,
-  WebSocketServer,
   ConnectedSocket,
+  MessageBody,
+  SubscribeMessage,
+  WebSocketGateway,
+  WebSocketServer,
 } from '@nestjs/websockets';
 import { ChatsService } from '../domain/chats.service';
 import { CreateChatDto } from './dto/create-chat.dto';
-import { UpdateChatDto } from './dto/update-chat.dto';
 import { Server, Socket } from 'socket.io';
 
 @WebSocketGateway({
@@ -19,6 +18,7 @@ export class ChatsGateway {
   @WebSocketServer()
   server: Server;
   doOnce = false;
+
   constructor(private readonly chatsService: ChatsService) {
     this.chatsService.typingUsers$.subscribe((data) => {
       if (this.doOnce) this.server.emit('getIsTyping', data);
@@ -28,7 +28,6 @@ export class ChatsGateway {
 
   @SubscribeMessage('createChat')
   create(@MessageBody() createChatDto: CreateChatDto) {
-    //todo store incoming messages using services
     this.chatsService
       .create(createChatDto)
       .then((newChat) => this.server.emit(createChatDto.room, newChat));

@@ -6,7 +6,6 @@ import { LogInModule } from './log-in/log-in.module';
 import { RequestsModule } from './requests/requests.module';
 import { FriendsModule } from './friends/friends.module';
 import { RoomsModule } from './rooms/rooms.module';
-import { ChatSchema } from './infrastructure/typeORM/schemas/chat.schema';
 
 @Module({
   imports: [

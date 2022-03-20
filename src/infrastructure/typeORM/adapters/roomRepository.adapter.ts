@@ -3,7 +3,6 @@ import { Injectable } from '@nestjs/common';
 import { Room } from '../../../core/room.entity';
 import { EntityManager, Repository } from 'typeorm';
 import { RoomSchema } from '../schemas/room.schema';
-import { Chat } from '../../../core/chat.entity';
 import { FriendSchema } from '../schemas/friend.schema';
 import { Friend } from '../../../core/friend';
 

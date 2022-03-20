@@ -1,12 +1,11 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
-  Inject,
+  Get,
+  Param,
+  Patch,
+  Post,
 } from '@nestjs/common';
 import { RoomsService } from '../domain/rooms.service';
 import { CreateRoomDto } from './dto/create-room.dto';
