@@ -3,6 +3,7 @@ import { CreateChatDto } from '../chats/dto/create-chat.dto';
 import { UpdateChatDto } from '../chats/dto/update-chat.dto';
 import { IRoomRepository } from './borders/roomRepository.interface';
 import { IChatRepository } from './borders/chatRepository.interface';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable()
 export class ChatsService {
@@ -30,5 +31,34 @@ export class ChatsService {
 
   remove(id: number) {
     return `This action removes a #${id} chat`;
+  }
+
+  private typingUsers: BehaviorSubject<{ username: string; timeoutId: any }[]> =
+    new BehaviorSubject([]);
+
+  public get typingUsers$(): Observable<string[]> {
+    return this.typingUsers.pipe(map((users) => users.map((u) => u.username)));
+  }
+
+  handleUserTyping(username: string) {
+    const existingUser = this.typingUsers.value.find(
+      (u) => u.username === username,
+    );
+    const timeoutId = setTimeout(
+      () =>
+        this.typingUsers.next(
+          this.typingUsers.value.filter((u) => u.username !== username),
+        ),
+      2000,
+    );
+    if (!existingUser) {
+      this.typingUsers.next([
+        ...this.typingUsers.value,
+        { username, timeoutId },
+      ]);
+    } else {
+      clearTimeout(existingUser.timeoutId);
+      existingUser.timeoutId = timeoutId;
+    }
   }
 }
