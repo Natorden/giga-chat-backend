@@ -6,6 +6,7 @@ import { LogInModule } from './log-in/log-in.module';
 import { RequestsModule } from './requests/requests.module';
 import { FriendsModule } from './friends/friends.module';
 import { RoomsModule } from './rooms/rooms.module';
+import { ProfilesModule } from './profiles/profiles.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { RoomsModule } from './rooms/rooms.module';
     RequestsModule,
     FriendsModule,
     RoomsModule,
+    ProfilesModule,
   ],
   controllers: [],
   providers: [],
