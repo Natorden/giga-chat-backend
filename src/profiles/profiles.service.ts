@@ -12,6 +12,12 @@ export class ProfilesService {
     return profile.save();
   }
 
+  findByProperty(gender: string): Profile<Profile[]> {
+    this.profileModel.find({
+      gender: gender,
+    }).exec;
+  }
+
   findAll() {
     return this.profileModel.find().exec();
   }
