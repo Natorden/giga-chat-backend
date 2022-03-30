@@ -7,6 +7,7 @@ import { RequestsModule } from './requests/requests.module';
 import { FriendsModule } from './friends/friends.module';
 import { RoomsModule } from './rooms/rooms.module';
 import { ProfilesModule } from './profiles/profiles.module';
+import { MatchesModule } from './matches/matches.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { ProfilesModule } from './profiles/profiles.module';
     FriendsModule,
     RoomsModule,
     ProfilesModule,
+    MatchesModule,
   ],
   controllers: [],
   providers: [],
