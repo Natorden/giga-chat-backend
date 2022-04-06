@@ -24,41 +24,42 @@ export class MatchesService {
         userUUID: createMatchDto.userMatchSenderUUID,
       })
       .exec();
-
     if (match) {
       if (createMatchDto.isAMatch) {
         return this.matchModel
-          .findByIdAndUpdate(
+          .findOneAndUpdate(
             {
-              useerUUID: createMatchDto.userMatchSenderUUID,
+              userUUID: createMatchDto.userMatchSenderUUID,
             },
-            { $push: { likes: createMatchDto.userMatchReceiverUUID } },
+            {
+              $push: { likes: createMatchDto.userMatchReceiverUUID },
+            },
           )
           .exec();
       } else {
         return this.matchModel
-          .findByIdAndUpdate(
+          .findOneAndUpdate(
             {
-              useerUUID: createMatchDto.userMatchSenderUUID,
+              userUUID: createMatchDto.userMatchSenderUUID,
             },
-            { $push: { dislikes: createMatchDto.userMatchReceiverUUID } },
+            {
+              $push: { disLikes: createMatchDto.userMatchReceiverUUID },
+            },
           )
           .exec();
       }
     } else {
       const likes = [];
-      const dislikes = [];
-
+      const dislike = [];
       if (createMatchDto.isAMatch) {
         likes.push(createMatchDto.userMatchReceiverUUID);
       } else {
-        dislikes.push(createMatchDto.userMatchReceiverUUID);
+        dislike.push(createMatchDto.userMatchReceiverUUID);
       }
-
       return this.matchModel.create({
         userUUID: createMatchDto.userMatchSenderUUID,
         likes: likes,
-        dislikes: dislikes,
+        disLikes: dislike,
       });
     }
   }
